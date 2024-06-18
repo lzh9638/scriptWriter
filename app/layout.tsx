@@ -43,7 +43,6 @@ export default async function RootLayout({
   return (
     <html lang={(lang && lang[0]) || defaultLocale} suppressHydrationWarning>
       <head />
-      555555
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
