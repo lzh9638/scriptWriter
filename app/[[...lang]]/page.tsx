@@ -26,7 +26,7 @@ export default async function LangHome({
       {/* display technology stack, partners, project honors, etc. */}
       {/* <ScrollingLogos /> */}
 
-      <Writer locale={dict.Writer} />
+      <Writer locale={dict.Writer} lang={lang} />
 
       {/* USP (Unique Selling Proposition) */}
       <Feature id="Features" locale={dict.Feature} langName={langName} />
