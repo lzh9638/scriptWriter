@@ -22,16 +22,16 @@ const Feature = ({
           {locale.title}
         </RoughNotation>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         {FEATURES?.map((feature, index) => (
           <div
             key={feature.title}
             className={`
               flex flex-col items-center text-center px-8 py-6 border-b
               ${index === 0 ? "md:border-r" : ""}
-              ${index === 1 ? "lg:border-r" : ""}
-              ${index === 2 ? "md:border-r lg:border-r-0" : ""}
-              ${index === 3 ? "lg:border-b-0 lg:border-r" : ""}
+              ${index === 1 ? "lg:border-r lg:border-r-0" : ""}
+              ${index === 2 ? "md:border-r lg:border-r-1 lg:border-b-0" : ""}
+              ${index === 3 ? "lg:border-b-0 lg:border-r-0" : ""}
               ${index === 4 ? "md:border-b-0 md:border-r" : ""}
               ${index === 5 ? "border-b-0 border-r-0" : ""}
             `}

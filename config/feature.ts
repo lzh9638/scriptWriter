@@ -64,16 +64,6 @@ export const FEATURES_ZH = [
     content: "免费制作脚本内容可以是指利用各种在线工具或平台，无需支付费用即可创建脚本或剧本的过程。这种服务通常包括提供简单易用的界面，让用户可以根据自己的需求定制剧本。",
     icon: MagnetIcon,
   },
-  {
-    title: "一键部署",
-    content: "与领先的网站托管服务紧密集成，实现即时网站发布。",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "全球化支持",
-    content: "支持多种语言，让你的网站吸引全球受众。",
-    icon: FaEarthAsia,
-  },
 ];
 
 export const FEATURES_JA = [
