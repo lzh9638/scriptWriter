@@ -1,8 +1,7 @@
-import { LucideIcon, MagnetIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import { IconType } from "react-icons";
 import { BsGithub } from "react-icons/bs";
-import { FaToolbox } from "react-icons/fa";
-import { FaEarthAsia, FaMobileScreenButton } from "react-icons/fa6";
+import { FaDebian, FaEarthAsia, FaMobileScreenButton } from "react-icons/fa6";
 import { MdCloudUpload } from "react-icons/md";
 
 export const FEATURES_EN = [
@@ -21,13 +20,13 @@ export const FEATURES_EN = [
     title: "Easy Customization",
     content:
       "Effortlessly change colors, fonts, and layouts without any coding knowledge.",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "SEO Optimized",
     content:
       "Templates built with search engine optimization in mind to enhance your website's discoverability.",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
   {
     title: "One-Click Deployment",
@@ -57,12 +56,12 @@ export const FEATURES_ZH = [
   {
     title: "自由探索多种叙事",
     content: "传统的剧本创作过程可能非常耗时，尤其是在探索各种叙事路径时。人工智能生成器简化了这一过程，提供了立即生成不同脚本变体的能力。对于创作者来说，这意味着可以使用更广阔的画布，让他们能够选择最引人注目的故事，而无需手动重写麻烦。",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "免费内容制作",
     content: "免费制作脚本内容可以是指利用各种在线工具或平台，无需支付费用即可创建脚本或剧本的过程。这种服务通常包括提供简单易用的界面，让用户可以根据自己的需求定制剧本。",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
 ];
 
@@ -80,12 +79,12 @@ export const FEATURES_JA = [
   {
     title: "簡単カスタマイズ",
     content: "色、フォント、レイアウトをコーディング知識なしで簡単に変更可能。",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "SEO最適化",
     content: "ウェブサイトの発見可能性を高めるために、検索エンジン最適化を念頭に置いて構築されたテンプレート。",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
   {
     title: "ワンクリックデプロイメント",
@@ -113,12 +112,12 @@ export const FEATURES_AR = [
   {
     title: "تخصيص سهل",
     content: "غير الألوان والخطوط والتخطيطات بسهولة دون الحاجة إلى معرفة بالبرمجة.",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "مُحسّن لمحركات البحث",
     content: "تم بناء القوالب مع مراعاة تحسين محركات البحث لتعزيز قابلية اكتشاف موقعك.",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
   {
     title: "نشر بنقرة واحدة",
@@ -146,12 +145,12 @@ export const FEATURES_ES = [
   {
     title: "Personalización Fácil",
     content: "Cambia colores, fuentes y diseños sin esfuerzo y sin necesidad de conocimientos de codificación.",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "Optimizado para SEO",
     content: "Plantillas construidas con la optimización de motores de búsqueda en mente para mejorar la descubribilidad de tu sitio web.",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
   {
     title: "Despliegue con Un Clic",
@@ -179,12 +178,12 @@ export const FEATURES_RU = [
   {
     title: "Легкая Настройка",
     content: "Легко изменяйте цвета, шрифты и макеты без знаний в области программирования.",
-    icon: FaToolbox,
+    icon: FaEarthAsia,
   },
   {
     title: "Оптимизировано для Поисковых Систем",
     content: "Шаблоны созданы с учетом оптимизации для поисковых систем, чтобы повысить обнаруживаемость вашего сайта.",
-    icon: MagnetIcon,
+    icon: FaDebian,
   },
   {
     title: "Развертывание в Один Клик",

@@ -18,10 +18,17 @@
   margin-top: 20px;
 }
 
+.right {
+  overflow: hidden;
+}
+
 .left .textareaBox {
   width: 500px;
   height: 120px;
+  
 }
+
+
 
 .selectBox {
   width: 500px;
@@ -53,4 +60,5 @@
   width: 500px;
   height: 100%;
   font-size: 18px;
+  overflow-y: auto;
 }

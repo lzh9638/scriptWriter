@@ -1,4 +1,5 @@
 "use client";
+import { marked } from "marked";
 import { useEffect, useRef, useState } from "react";
 import styles from "./Writer.module.css";
 
@@ -9,6 +10,7 @@ const Writer = ({ locale, lang }: any) => {
   const [showContent, setShowContent] = useState(false);
   const [displayedContent, setDisplayedContent] = useState("");
   const contentRef: any = useRef(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   // 初始化textarea的值，这里设为空字符串
   const [textareaValue, setTextareaValue] = useState("");
@@ -20,29 +22,40 @@ const Writer = ({ locale, lang }: any) => {
   // 按钮点击时的处理函数，打印选中的value
   const handleButtonClick = () => {
     console.log("Selected value:", { textareaValue, selectedOption });
-    const langType: any =  lang && lang[0]
-    fetch(`/api/chatgpt`, {
+    if (!textareaValue) {
+      alert('主题不能为空!')
+      return
+    }
+    if (!selectedOption) {
+      alert('风格不能为空!')
+      return
+    }
+    setIsButtonDisabled(true);
+    setDisplayedContent('');
+    setStreamContent('');
+    setShowContent(false);
+    fetch(`/api/test`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages: [{ role: "user", content: 'hello' }] }),
+      body: JSON.stringify({ messages: [{ role: "user", content: { textareaValue, selectedOption } }] }),
     })
-    .then( res => {
-      console.log( { res });
-      
-    })
-    // .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log( data );
-        
-    //     if (data.body?.message?.content) {
-    //       const markdownContent = data.body.message.content;
-    //       const htmlContent: any = marked(markdownContent);
-    //       setStreamContent(htmlContent);
-    //       setShowContent(true);
-    //     }
-    //   });
+      .then( res => res.json())
+      .then((data: any) => {
+        if (data?.body?.message?.content) {
+          const markdownContent = data.body.message.content;
+          const htmlContent: any = marked(markdownContent);
+          setStreamContent(htmlContent);
+          setShowContent(true);
+        } else {
+          setIsButtonDisabled(false);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setIsButtonDisabled(false);
+      });
   };
 
   // 处理textarea内容变化的函数
@@ -55,15 +68,37 @@ const Writer = ({ locale, lang }: any) => {
       let index = 0;
       const intervalId = setInterval(() => {
         if (index <= streamContent.length) {
-          setDisplayedContent((prev) => streamContent.slice(0, index));
+          setDisplayedContent((prev) => getSafeSubstring(streamContent, index));
           index++;
         } else {
           clearInterval(intervalId);
+          setShowContent(false);
+          setIsButtonDisabled(false);
         }
       }, 30); // 每100ms显示一个字符
       return () => clearInterval(intervalId);
     }
   }, [showContent, streamContent]);
+
+  const getSafeSubstring = (str: any, endIndex: any) => {
+    let openTagCount = 0;
+    let closeTagCount = 0;
+
+    for (let i = 0; i < endIndex; i++) {
+      if (str[i] === '<') {
+        openTagCount++;
+      } else if (str[i] === '>') {
+        closeTagCount++;
+      }
+    }
+
+    // Ensure we do not end in the middle of a tag
+    if (openTagCount > closeTagCount) {
+      endIndex = str.indexOf('>', endIndex) + 1;
+    }
+
+    return str.slice(0, endIndex);
+  };
 
   useEffect(() => {
     if (contentRef.current) {
@@ -77,7 +112,7 @@ const Writer = ({ locale, lang }: any) => {
       <div className={styles.left}>
         {/* 选项一 */}
         <div className={styles.item}>
-          <div className={styles.label}>Topic Script</div>
+          <div className={styles.label}>{locale.theme}</div>
           <textarea
             value={textareaValue}
             onChange={handleTextareaChange}
@@ -87,7 +122,7 @@ const Writer = ({ locale, lang }: any) => {
         </div>
         {/* 选项二 */}
         <div className={`${styles.item} ${styles.twoItem}`} >
-          <div className={styles.label}>Select your vibe</div>
+          <div className={styles.label}>{locale.style}</div>
           <label className={`${styles.selectBox} form-control`}>
             <select
               className="select select-bordered"
@@ -107,8 +142,10 @@ const Writer = ({ locale, lang }: any) => {
           <button
             className={`${styles.buttonBox} btn btn-outline`}
             onClick={handleButtonClick}
+            disabled={isButtonDisabled}
           >
-            Create script
+            {isButtonDisabled && <span className="loading loading-spinner"></span>}
+            {isButtonDisabled ? 'Loading...' : locale.generate}
           </button>
         </div>
       </div>

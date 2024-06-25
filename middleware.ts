@@ -9,6 +9,11 @@ export function middleware(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
+  // 如果请求路径是 API 路由，则直接返回，不进行重定向
+  if (pathname.startsWith("/api/")) {
+    return;
+  }
+
   if (isExit) return;
 
   request.nextUrl.pathname = `/`;
