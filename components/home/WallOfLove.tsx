@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { TwitterX } from "@/components/social-icons/icons";
-import { siteConfig } from "@/config/site";
 import { WALL_OF_LOVE } from "@/config/wallOfLove";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,20 +17,8 @@ const WallOfLove = ({ id, locale }: { id: string; locale: any }) => {
             {locale.title}
           </RoughNotation>
         </h2>
-        <p className="text-large text-default-500">
-          {/* Don't take our word for it. Here's what they have to say. */}
-          {locale.description1}{" "}
-          <Link
-            href={siteConfig.authors[0].twitter as string}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="text-primary underline"
-          >
-            {locale.description2}
-          </Link>
-          {locale.description3}
-        </p>
       </div>
+      {/* 评论 */}
       <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 overflow-hidden relative transition-all">
         {WALL_OF_LOVE.map((testimonial, index) => (
           <div className="mb-4 z-0 break-inside-avoid-column" key={index}>

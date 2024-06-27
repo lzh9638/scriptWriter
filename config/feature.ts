@@ -1,20 +1,19 @@
 import { LucideIcon } from "lucide-react";
 import { IconType } from "react-icons";
-import { BsGithub } from "react-icons/bs";
-import { FaDebian, FaEarthAsia, FaMobileScreenButton } from "react-icons/fa6";
+import { FaArrowsSpin, FaBezierCurve, FaDebian, FaEarthAsia } from "react-icons/fa6";
 import { MdCloudUpload } from "react-icons/md";
 
 export const FEATURES_EN = [
   {
     title: "Open Source Advantage",
     content: "Completely free with a wealth of customization options.",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "Responsive Design",
     content:
       "Templates meticulously designed to ensure optimal display on any device.",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "Easy Customization",
@@ -46,12 +45,12 @@ export const FEATURES_ZH = [
   {
     title: "生成YouTube脚本",
     content: "为任何类型的视频生成 YouTube 视频脚本，无论是视频博客、操作方法或教程视频，还是带旁白的简单电影片段。",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "Script脚本创建",
     content: "在快节奏的内容制作世界中，时间往往至关重要。人工智能脚本生成器因在短短几分钟内生成脚本而脱颖而出。这对于那些时间紧迫的行业或那些受益于多种想法的快速原型设计的行业来说尤其宝贵。只需按一下按钮，传统上需要几天或几周的头脑风暴和起草的工作现在可以立即完成。",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "自由探索多种叙事",
@@ -69,12 +68,12 @@ export const FEATURES_JA = [
   {
     title: "オープンソースの利点",
     content: "完全無料で、豊富なカスタマイズオプションを提供。",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "レスポンシブデザイン",
     content: "どのデバイス上でも最適に表示されるように細心のデザインを施したテンプレート。",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "簡単カスタマイズ",
@@ -102,12 +101,12 @@ export const FEATURES_AR = [
   {
     title: "ميزة المصدر المفتوح",
     content: "مجانية بالكامل مع ثروة من خيارات التخصيص.",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "تصميم متجاوب",
     content: "تم تصميم القوالب بعناية لضمان عرض مثالي على أي جهاز.",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "تخصيص سهل",
@@ -135,12 +134,12 @@ export const FEATURES_ES = [
   {
     title: "Ventaja del Código Abierto",
     content: "Completamente gratuito con una riqueza de opciones de personalización.",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "Diseño Responsivo",
     content: "Plantillas diseñadas meticulosamente para garantizar una visualización óptima en cualquier dispositivo.",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "Personalización Fácil",
@@ -168,12 +167,12 @@ export const FEATURES_RU = [
   {
     title: "Преимущество Открытого Исходного Кода",
     content: "Полностью бесплатно с широкими возможностями настройки.",
-    icon: BsGithub,
+    icon: FaArrowsSpin,
   },
   {
     title: "Адаптивный Дизайн",
     content: "Шаблоны, тщательно разработанные для обеспечения оптимального отображения на любом устройстве.",
-    icon: FaMobileScreenButton,
+    icon: FaBezierCurve ,
   },
   {
     title: "Легкая Настройка",

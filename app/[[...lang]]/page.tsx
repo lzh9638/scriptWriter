@@ -1,4 +1,3 @@
-import CTA from "@/components/home/CTA";
 import FAQ from "@/components/home/FAQ";
 import Feature from "@/components/home/Feature";
 import Hero from "@/components/home/Hero";
@@ -31,7 +30,7 @@ export default async function LangHome({
       {/* USP (Unique Selling Proposition) */}
       <Feature id="Features" locale={dict.Feature} langName={langName} />
 
-      {/* Pricing */}
+      {/* 价格 */}
       {/* <Pricing id="Pricing" locale={dict.Pricing} langName={langName} /> */}
 
       {/* Testimonials / Wall of Love */}
@@ -41,7 +40,7 @@ export default async function LangHome({
       <FAQ id="FAQ" locale={dict.FAQ} langName={langName} />
 
       {/* CTA (Call to Action) */}
-      <CTA locale={dict.CTA} CTALocale={dict.CTAButton} />
+      {/* <CTA locale={dict.CTA} CTALocale={dict.CTAButton} /> */}
     </>
   );
 }
