@@ -6,7 +6,7 @@ export const POST = async (req: any) => {
   const body = messages[0].content;
   
   const openai = new OpenAI({
-    apiKey: "sk-1TAgyyOUl0tf1IeI0877221fEdD34e168e06F10844Cb738f",
+    apiKey: "sk-1TAgyyOUl0tf1IeI0877221fEd",
     baseURL: "https://api.xty.app/v1",
   });
   const text = `
