@@ -2,11 +2,10 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 export const POST = async (req: any) => {
   const { messages } = await req.json();
-  console.log( 232323, messages[0] );
+  const apiKey = process.env.OPENAI_API_KEY;
   const body = messages[0].content;
-  
   const openai = new OpenAI({
-    apiKey: "sk-1TAgyyOUl0tf1IeI0877221fEd",
+    apiKey,
     baseURL: "https://api.xty.app/v1",
   });
   const text = `
