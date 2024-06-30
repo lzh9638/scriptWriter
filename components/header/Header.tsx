@@ -15,10 +15,6 @@ const links = [
     href: "#Features",
   },
   {
-    label: "Pricing",
-    href: "#Pricing",
-  },
-  {
     label: "Wall of Love",
     href: "#WallOfLove",
   },

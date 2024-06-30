@@ -1,43 +1,53 @@
 {
   "Hero": {
-    "title1": "",
-    "title2": "ランディングページ",
-    "title3": "迅速に構築",
-    "description": "無料でオープンソースかつ強力なランディングページのテンプレート。さまざまなプロジェクトに理想的で、1時間以内にランディングページを作成できます。"
+    "title1": "AIスクリプト",
+    "title2": "ライター",
+    "title3": "",
+    "description": "あなたのビデオのために人工知能が無料でスクリプトを生成します！"
   },
   "SocialProof": {
-    "maker": "開発者が迅速に出荷"
+    "maker": "メーカーが素早く開発"
   },
   "Feature": {
     "title": "Feature"
   },
   "Pricing": {
     "title": "価格設定",
-    "title2": "無制限アクセスを取得。",
-    "description": "現在閲覧中のページは、オープンソースで無料のテンプレートです。",
+    "title2": "無制限アクセスをお持ちです",
+    "description": "現在ご覧のページはオープンソースで無料のテンプレートです。",
     "doYouLike": "このランディングページのテンプレートは気に入りましたか？",
-    "follow": "私のTwitterをフォローしてください。"
+    "follow": "Twitterをフォローしてください。"
   },
   "WallOfLove": {
-    "title": "WallOfLove",
-    "description1": "このランディングページテンプレートを使用してTwitterで推奨した場合、",
-    "description2": "私に知らせてください",
-    "description3": "。あなたのツイートと推薦をここに表示します。"
+    "title": "Wall of Love",
+    "description1": "このランディングページのテンプレートを使用して推薦し、Twitterでお知らせください。",
+    "description2": "私はあなたのツイートと推薦をここに表示します。"
   },
   "FAQ": {
-    "title": "FAQs",
-    "description": "最も頻繁に尋ねられる質問はこちらです。"
+    "title": "よくある質問",
+    "description": "ここにいくつかのよくある質問があります。"
   },
   "CTA": {
-    "title": "今すぐあなたのランディングページを構築",
-    "description1": "あなたのランディングページを",
-    "description2": "構築し、",
-    "description3": "あなたの製品を",
-    "description4": "紹介し、そして",
-    "description5": "収益を得始めましょう",
-    "description6": "！"
+    "title": "あなたのランディングページを今すぐ作成",
+    "description1": "構築",
+    "description2": "あなたのランディングページ、",
+    "description3": "あなたの製品を展示し、",
+    "description4": "収益を開始",
+    "description5": "する！"
   },
   "CTAButton": {
-    "title": "テンプレートを入手"
+    "title": "テンプレートを取得"
+  },
+  "Writer": {
+    "options": [
+      "ランダムな",
+      "プロフェッショナルな",
+      "面白い",
+      "有用な情報を提供する",
+      "創造的な"
+    ],
+    "theme": "テーマ",
+    "style": "スタイル",
+    "generate": "生成"
   }
 }
