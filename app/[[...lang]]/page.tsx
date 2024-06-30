@@ -15,7 +15,7 @@ export default async function LangHome({
     lang && lang[0] && lang[0] !== "index" ? lang[0] : defaultLocale;
   
   const dict = await getDictionary(langName);
-  
+
   return (
     <>
       {/* Hero Section */}
