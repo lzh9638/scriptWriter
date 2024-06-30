@@ -1,9 +1,8 @@
 import { SiteConfig } from "@/types/siteConfig";
 import { BsGithub, BsTwitterX } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import { SiBuymeacoffee } from "react-icons/si";
 
-const OPEN_SOURCE_URL = "https://github.com/weijunext/landing-page-boilerplate";
+const OPEN_SOURCE_URL = "https://github.com/";
 
 const baseSiteConfig = {
   name: "YouTube Script Writer",
@@ -41,13 +40,8 @@ const baseSiteConfig = {
     { name: "repo", href: OPEN_SOURCE_URL, icon: BsGithub },
     {
       name: "twitter",
-      href: "https://twitter.com/weijunext",
+      href: "https://x.com/",
       icon: BsTwitterX,
-    },
-    {
-      name: "buyMeCoffee",
-      href: "https://www.buymeacoffee.com/weijunext",
-      icon: SiBuymeacoffee,
     },
   ],
   footerLinks: [

@@ -3,13 +3,13 @@
   padding: 60px 20px;
 
   border: 2px solid rgba(211, 211, 211, 0.7); /* Light gray border */
-      border-radius: 15px; /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Light shadow */
-                  0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
-      transition: all 0.3s ease-in-out;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+    /* Light shadow */ 0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+  transition: all 0.3s ease-in-out;
 }
 
-.item .label{
+.item .label {
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -25,10 +25,7 @@
 .left .textareaBox {
   width: 500px;
   height: 120px;
-  
 }
-
-
 
 .selectBox {
   width: 500px;
@@ -39,7 +36,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 28px;
-  
 }
 .submit .buttonBox {
   width: 280px;
@@ -61,4 +57,52 @@
   height: 100%;
   font-size: 18px;
   overflow-y: auto;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; /* 切换为垂直布局 */
+    padding: 30px 10px; /* 调整内边距 */
+    box-shadow: none;
+    width: 90%;
+    border: none;
+  }
+
+  .left,
+  .right {
+    width: 100%; /* 充满整个屏幕宽度 */
+    margin-right: 0; /* 移除右侧间距 */
+    margin-bottom: 20px; /* 增加底部间距 */
+    height: auto; /* 自动高度 */
+  }
+
+  .left .textareaBox {
+    width: 100%; /* 宽度占父元素100% */
+    margin-bottom: 10px; /* 调整下方间距 */
+  }
+
+  .selectBox {
+    width: 100%; /* 选择框宽度占父元素100% */
+  }
+
+  .submit .buttonBox {
+    width: 100%; /* 按钮宽度占父元素100% */
+  }
+
+  .right .textareaBox {
+    width: 100%; /* 右侧文本框宽度占父元素100% */
+    font-size: 16px; /* 调整字体大小 */
+    line-height: 1.5; /* 调整行高 */
+    height: 200px; /* 限定高度以适应内容 */
+    overflow-y: auto; /* 如果内容溢出则显示滚动条 */
+  }
+
+  .item .label {
+    font-size: 18px; /* 调整标签字体大小 */
+    margin-bottom: 8px; /* 调整标签底部间距 */
+  }
+  /deep/ .Writer_submit__U_5BN {
+    justify-content: flex-start !important;
+  }
 }
