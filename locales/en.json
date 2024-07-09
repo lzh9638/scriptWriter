@@ -51,5 +51,54 @@
     "theme": "Theme",
     "style": "Style",
     "generate": "Generate"
+  },
+  "terms_of_service": {
+    "title": "Terms of Service",
+    "sections": [
+      {
+        "heading": "1. Introduction",
+        "content": "Welcome to [Your Website Name], we are a platform focused on writing YouTube video scripts. This Terms of Service Agreement (hereinafter referred to as the 'Agreement') governs your use of the [Your Website Name] service."
+      },
+      {
+        "heading": "2. Acceptance of Terms",
+        "content": "By accessing or using [Your Website Name], you agree to accept all the terms and conditions of this Agreement."
+      },
+      {
+        "heading": "3. Service Description",
+        "content": "[Your Website Name] provides an online script writing service to help users create high-quality scripts for YouTube videos."
+      },
+      {
+        "heading": "4. User Qualifications",
+        "content": "You must be at least 13 years old to use our service."
+      },
+      {
+        "heading": "5. Account Security",
+        "content": "You are responsible for maintaining the confidentiality of your account and password, and restricting access to your account."
+      },
+      {
+        "heading": "6. User Conduct",
+        "content": "You agree not to use our service for any illegal activities, disrupt our service, or engage in any conduct that may damage our reputation."
+      },
+      {
+        "heading": "7. Intellectual Property",
+        "content": "All content and materials of [Your Website Name], including but not limited to text, scripts, images, designs, are our intellectual property."
+      },
+      {
+        "heading": "8. Modification of Terms",
+        "content": "We reserve the right to modify the terms of service at any time, and these modifications will be effective upon posting."
+      },
+      {
+        "heading": "9. Termination of Service",
+        "content": "We reserve the right to terminate or suspend the service at any time, without prior notice."
+      },
+      {
+        "heading": "10. Disclaimer",
+        "content": "[Your Website Name] does not guarantee uninterrupted or error-free service. We are not liable for any direct, indirect, special, or consequential damages."
+      },
+      {
+        "heading": "11. Applicable Law and Dispute Resolution",
+        "content": "This Agreement is governed by the laws of [Your Country/Region], and any disputes shall be submitted to the courts of [Your Country/Region] for resolution."
+      }
+    ]
   }
 }

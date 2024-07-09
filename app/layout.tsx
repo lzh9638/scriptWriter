@@ -35,11 +35,13 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode;
   params: { lang: string[] | undefined };
 }) {
+  const { lang } = params;
+  
   return (
     <html lang={(lang && lang[0]) || defaultLocale} suppressHydrationWarning>
       <head />

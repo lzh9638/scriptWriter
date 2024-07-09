@@ -1,0 +1,27 @@
+/* terms.css */
+.terms-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  font-size: 20px;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.section-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+}
