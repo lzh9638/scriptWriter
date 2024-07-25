@@ -14,12 +14,14 @@ export const POST = async (req: any) => {
   「情境 (Scenario):」 
     dot1
     dot2
+  「要求 (Requirements):」输出语言：dot3
   「解决方案 (Solution):」 与主题强相关，详细描述别一笔带过，让看的人不会云里雾里、莫名其妙；
   「步骤 (Steps):」 给出最优脚本。
   `;
   const newText = text
-  .replace('dot1', body.textareaValue)
-  .replace('dot2', body.selectedOption);
+    .replace("dot1", body.textareaValue)
+    .replace("dot2", body.selectedOption)
+    .replace("dot3", body.lang);
   try {
     const stream = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -37,5 +39,5 @@ export const POST = async (req: any) => {
 };
 
 export const GET = async (req: any) => {
-  return NextResponse.json({ body: '999000' }, { status: 200 });
-}
+  return NextResponse.json({ body: "999000" }, { status: 200 });
+};

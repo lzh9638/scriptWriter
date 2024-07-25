@@ -23,25 +23,32 @@ const Writer = ({ locale, lang }: any) => {
   const handleButtonClick = () => {
     console.log("Selected value:", { textareaValue, selectedOption });
     if (!textareaValue) {
-      alert('主题不能为空!')
-      return
+      alert("主题不能为空!");
+      return;
     }
     if (!selectedOption) {
-      alert('风格不能为空!')
-      return
+      alert("风格不能为空!");
+      return;
     }
     setIsButtonDisabled(true);
-    setDisplayedContent('');
-    setStreamContent('');
+    setDisplayedContent("");
+    setStreamContent("");
     setShowContent(false);
     fetch(`/api/test`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages: [{ role: "user", content: { textareaValue, selectedOption } }] }),
+      body: JSON.stringify({
+        messages: [
+          {
+            role: "user",
+            content: { textareaValue, selectedOption, lang: lang[0] },
+          },
+        ],
+      }),
     })
-      .then( res => res.json())
+      .then((res) => res.json())
       .then((data: any) => {
         if (data?.body?.message?.content) {
           const markdownContent = data.body.message.content;
@@ -53,7 +60,7 @@ const Writer = ({ locale, lang }: any) => {
         }
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setIsButtonDisabled(false);
       });
   };
@@ -85,16 +92,16 @@ const Writer = ({ locale, lang }: any) => {
     let closeTagCount = 0;
 
     for (let i = 0; i < endIndex; i++) {
-      if (str[i] === '<') {
+      if (str[i] === "<") {
         openTagCount++;
-      } else if (str[i] === '>') {
+      } else if (str[i] === ">") {
         closeTagCount++;
       }
     }
 
     // Ensure we do not end in the middle of a tag
     if (openTagCount > closeTagCount) {
-      endIndex = str.indexOf('>', endIndex) + 1;
+      endIndex = str.indexOf(">", endIndex) + 1;
     }
 
     return str.slice(0, endIndex);
@@ -121,7 +128,7 @@ const Writer = ({ locale, lang }: any) => {
           ></textarea>
         </div>
         {/* 选项二 */}
-        <div className={`${styles.item} ${styles.twoItem}`} >
+        <div className={`${styles.item} ${styles.twoItem}`}>
           <div className={styles.label}>{locale.style}</div>
           <label className={`${styles.selectBox} form-control`}>
             <select
@@ -144,15 +151,21 @@ const Writer = ({ locale, lang }: any) => {
             onClick={handleButtonClick}
             disabled={isButtonDisabled}
           >
-            {isButtonDisabled && <span className="loading loading-spinner"></span>}
-            {isButtonDisabled ? 'Loading...' : locale.generate}
+            {isButtonDisabled && (
+              <span className="loading loading-spinner"></span>
+            )}
+            {isButtonDisabled ? "Loading..." : locale.generate}
           </button>
         </div>
       </div>
       {/* 右侧 */}
       <div className={styles.right}>
         {/* <textarea className={`${styles.textareaBox} textarea textarea-bordered`}  placeholder="Your script will appear here."></textarea> */}
-         <div ref={contentRef} className={`${styles.textareaBox} textarea textarea-bordered`} dangerouslySetInnerHTML={{ __html: displayedContent }} />
+        <div
+          ref={contentRef}
+          className={`${styles.textareaBox} textarea textarea-bordered`}
+          dangerouslySetInnerHTML={{ __html: displayedContent }}
+        />
       </div>
     </div>
   );
