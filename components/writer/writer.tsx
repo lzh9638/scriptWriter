@@ -21,7 +21,6 @@ const Writer = ({ locale, lang }: any) => {
   };
   // 按钮点击时的处理函数，打印选中的value
   const handleButtonClick = () => {
-    console.log("Selected value:", { textareaValue, selectedOption });
     if (!textareaValue) {
       alert("主题不能为空!");
       return;
@@ -43,7 +42,7 @@ const Writer = ({ locale, lang }: any) => {
         messages: [
           {
             role: "user",
-            content: { textareaValue, selectedOption, lang: lang[0] },
+            content: { textareaValue, selectedOption, lang: setLanguage() },
           },
         ],
       }),
@@ -64,7 +63,18 @@ const Writer = ({ locale, lang }: any) => {
         setIsButtonDisabled(false);
       });
   };
+  // 返回语言
+  const setLanguage = () => {
+    let defaultLang = "zh"; // 默认中文
+    let langIndex = 0;
 
+    if (lang && lang.length > 0) {
+      langIndex = 0;
+    } else {
+      lang = [defaultLang]; // 如果 lang 不存在或为空，则设置为默认值
+    }
+    return lang[langIndex];
+  };
   // 处理textarea内容变化的函数
   const handleTextareaChange = (event: any) => {
     setTextareaValue(event.target.value);

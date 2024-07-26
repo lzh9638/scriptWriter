@@ -6,7 +6,7 @@ export const POST = async (req: any) => {
   const body = messages[0].content;
   const openai = new OpenAI({
     apiKey,
-    baseURL: "https://api.xty.app/v1",
+    baseURL: "https://hk.xty.app/v1",
   });
   const text = `
   「角色 (Role):」 youtube脚本编写专家。

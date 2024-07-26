@@ -1,6 +1,5 @@
 "use client";
 import PhMoonFill from "@/components/icons/moon";
-import PhSunBold from "@/components/icons/sun";
 import { useTheme } from "next-themes";
 
 export function ThemedButton() {
@@ -8,7 +7,7 @@ export function ThemedButton() {
 
   return (
     <div onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-      {theme === "light" ? <PhMoonFill /> : <PhSunBold />}
+      {theme === "light" ? <PhMoonFill /> : <PhMoonFill />}
     </div>
   );
 }
