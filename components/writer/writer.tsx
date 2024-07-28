@@ -19,6 +19,36 @@ const Writer = ({ locale, lang }: any) => {
   const handleSelectChange = (event: any) => {
     setSelectedOption(event.target.value);
   };
+  const featAPi = async () => {
+    const response: any = await fetch('/api/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: [
+          {
+            role: "user",
+            content: { textareaValue, selectedOption, lang: setLanguage() },
+          },
+        ],
+      }),
+    });
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+    while (!done) {
+      const { value, done: isDone } = await reader.read();
+      console.log( '231111===01--00', value , isDone);
+
+      done = isDone;
+      if (value) {
+        const chunkValue = decoder.decode(value);
+        console.log(`Received data: ${chunkValue}`);
+      }
+    }
+
+  }
   // 按钮点击时的处理函数，打印选中的value
   const handleButtonClick = () => {
     if (!textareaValue) {
@@ -33,6 +63,8 @@ const Writer = ({ locale, lang }: any) => {
     setDisplayedContent("");
     setStreamContent("");
     setShowContent(false);
+    featAPi();
+    return
     fetch(`/api/test`, {
       method: "POST",
       headers: {

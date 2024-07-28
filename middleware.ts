@@ -7,7 +7,6 @@ export function middleware(request: NextRequest) {
   const isExit = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
-  console.log("=====", isExit);
   // 如果请求路径是 API 路由，则直接返回，不进行重定向
   if (pathname.startsWith("/api/")) {
     return;

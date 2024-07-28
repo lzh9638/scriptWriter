@@ -23,16 +23,67 @@ export const POST = async (req: any) => {
     .replace("dot2", body.selectedOption)
     .replace("dot3", body.lang);
   try {
-    const stream = await openai.chat.completions.create({
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: newText }],
-      max_tokens: 10000,
+      max_tokens: 10,
+      stream: true,
     });
 
-    return NextResponse.json({ body: stream.choices[0] }, { status: 200 });
+    // 开始写入HTTP响应
+    const headers = new Headers({
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    });
+
+    // 使用提供的 iterator 创建 ReadableStream
+    const readableStream = new ReadableStream({
+      start(controller) {
+        // 使用 response 的 iterator 读取数据
+        const reader = response.iterator();
+
+        async function push() {
+          const { value, done } = await reader.next();
+          if (done) {
+            controller.close();
+            return;
+          }
+
+          if (value !== undefined) {
+            console.log(
+              "测试===",
+              typeof value === "object" && value instanceof Uint8Array
+            );
+
+            // 确保 value 是 Uint8Array 或者 string 类型
+            if (typeof value === "object" && value instanceof Uint8Array) {
+              controller.enqueue(value);
+            } else if (typeof value === "string") {
+              const uint8Array = new TextEncoder().encode(value);
+              controller.enqueue(uint8Array);
+            } else {
+              console.error("Invalid value type:", value);
+            }
+          }
+
+          push(); // 继续读取下一个块
+        }
+
+        push();
+      },
+    });
+
+    return new NextResponse(readableStream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (err) {
     return NextResponse.json(
-      { error: "failed to purchase boost pack" },
+      { error: "failed to purchase boost pack" + err },
       { status: 500 }
     );
   }
