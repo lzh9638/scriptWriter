@@ -172,7 +172,6 @@ const Writer = ({ locale, lang }: any) => {
       </div>
       {/* 右侧 */}
       <div className={styles.right}>
-        {/* <textarea className={`${styles.textareaBox} textarea textarea-bordered`}  placeholder="Your script will appear here."></textarea> */}
         <div
           ref={contentRef}
           className={`${styles.textareaBox} textarea textarea-bordered`}
