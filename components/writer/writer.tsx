@@ -1,4 +1,5 @@
 "use client";
+import { useCompletion } from "ai/react";
 import { marked } from "marked";
 import { useEffect, useRef, useState } from "react";
 import styles from "./Writer.module.css";
@@ -15,42 +16,25 @@ const Writer = ({ locale, lang }: any) => {
   // 初始化textarea的值，这里设为空字符串
   const [textareaValue, setTextareaValue] = useState("");
 
+  const {
+    completion,
+    complete, // 添加 complete 函数
+    isLoading,
+    setInput,
+  } = useCompletion({
+    api: "/api/test",
+    onFinish: () => {
+      setIsButtonDisabled(false);
+    },
+  });
+
   // 处理select变化的函数
   const handleSelectChange = (event: any) => {
     setSelectedOption(event.target.value);
   };
-  const featAPi = async () => {
-    const response: any = await fetch('/api/test', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        messages: [
-          {
-            role: "user",
-            content: { textareaValue, selectedOption, lang: setLanguage() },
-          },
-        ],
-      }),
-    });
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
-    while (!done) {
-      const { value, done: isDone } = await reader.read();
-      console.log( '231111===01--00', value , isDone);
 
-      done = isDone;
-      if (value) {
-        const chunkValue = decoder.decode(value);
-        console.log(`Received data: ${chunkValue}`);
-      }
-    }
-
-  }
   // 按钮点击时的处理函数，打印选中的value
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     if (!textareaValue) {
       alert("主题不能为空!");
       return;
@@ -63,37 +47,20 @@ const Writer = ({ locale, lang }: any) => {
     setDisplayedContent("");
     setStreamContent("");
     setShowContent(false);
-    featAPi();
-    return
-    fetch(`/api/test`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messages: [
-          {
-            role: "user",
-            content: { textareaValue, selectedOption, lang: setLanguage() },
-          },
-        ],
-      }),
-    })
-      .then((res) => res.json())
-      .then((data: any) => {
-        if (data?.body?.message?.content) {
-          const markdownContent = data.body.message.content;
-          const htmlContent: any = marked(markdownContent);
-          setStreamContent(htmlContent);
-          setShowContent(true);
-        } else {
-          setIsButtonDisabled(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setIsButtonDisabled(false);
-      });
+    const inputData = JSON.stringify({
+      textareaValue,
+      selectedOption,
+      lang: setLanguage(),
+    });
+
+    setInput(inputData);
+
+    try {
+      await complete(inputData);
+    } catch (error) {
+      console.error("Error during completion:", error);
+      setIsButtonDisabled(false);
+    }
   };
   // 返回语言
   const setLanguage = () => {
@@ -107,6 +74,9 @@ const Writer = ({ locale, lang }: any) => {
     }
     return lang[langIndex];
   };
+
+  const featAPi = async (e: any) => {};
+
   // 处理textarea内容变化的函数
   const handleTextareaChange = (event: any) => {
     setTextareaValue(event.target.value);
@@ -153,7 +123,7 @@ const Writer = ({ locale, lang }: any) => {
     if (contentRef.current) {
       contentRef.current.scrollTop = contentRef.current.scrollHeight;
     }
-  }, [displayedContent]);
+  }, [completion]);
 
   return (
     <div className={styles.wrapper}>
@@ -206,7 +176,7 @@ const Writer = ({ locale, lang }: any) => {
         <div
           ref={contentRef}
           className={`${styles.textareaBox} textarea textarea-bordered`}
-          dangerouslySetInnerHTML={{ __html: displayedContent }}
+          dangerouslySetInnerHTML={{ __html: marked(completion) }}
         />
       </div>
     </div>
